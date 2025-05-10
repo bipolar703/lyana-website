@@ -1,6 +1,10 @@
 
 import { useState } from "react";
 
+/**
+ * Gallery component
+ * Displays a grid of destination images with hover effects
+ */
 const Gallery = () => {
   const images = [
     {
@@ -27,6 +31,30 @@ const Gallery = () => {
       location: "Downtown Dubai, UAE",
       description: "Marvel at Dubai's futuristic skyline, a testament to architectural innovation."
     },
+    {
+      url: "https://images.unsplash.com/photo-1473177104440-ffee2f376098",
+      alt: "Paris - Iconic Eiffel Tower",
+      location: "Paris, France",
+      description: "Visit the romantic city of Paris and its world-famous landmarks and cuisine."
+    },
+    {
+      url: "https://images.unsplash.com/photo-1433086966358-54859d0ed716",
+      alt: "Switzerland - Mountain landscape with waterfall",
+      location: "Swiss Alps, Switzerland",
+      description: "Experience the stunning natural beauty of the Swiss Alps and its pristine landscapes."
+    },
+    {
+      url: "https://images.unsplash.com/photo-1592906209472-a36b1f3782ef",
+      alt: "Bali - Tropical beach paradise",
+      location: "Bali, Indonesia",
+      description: "Unwind in the tropical paradise of Bali with its pristine beaches and vibrant culture."
+    },
+    {
+      url: "https://images.unsplash.com/photo-1601304382871-8b6214d99043",
+      alt: "Tokyo - Modern cityscape with traditional elements",
+      location: "Tokyo, Japan",
+      description: "Experience the perfect blend of tradition and innovation in Japan's vibrant capital."
+    },
   ];
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -36,11 +64,11 @@ const Gallery = () => {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-lyana-navy relative inline-block">
-            Discover Your Next Destination
+            Explore Global Destinations
             <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-lyana-gold"></span>
           </h2>
           <p className="text-gray-600 mt-8">
-            Explore the beauty and wonder of Dubai and Greece. Let us help you get there with our seamless visa services.
+            Discover incredible destinations worldwide. Let us help you get there with our seamless visa and flight booking services.
           </p>
         </div>
 

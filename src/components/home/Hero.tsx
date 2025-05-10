@@ -3,6 +3,10 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
+/**
+ * Hero component for the homepage
+ * Displays a full-screen hero section with a heading, subheading, and call-to-action buttons
+ */
 const Hero = () => {
   return (
     <div className="relative min-h-screen bg-hero-pattern bg-cover bg-center flex items-center">
@@ -10,14 +14,14 @@ const Hero = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl animate-fade-in">
           <span className="inline-block px-4 py-2 bg-lyana-gold/30 text-white rounded-full mb-4 backdrop-blur-sm">
-            Premier Visa Services
+            Global Travel Services
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            Your Effortless Path to Dubai & Greece Visas
+            Your Gateway to Worldwide Travel & Visa Services
           </h1>
           <p className="text-xl text-white/90 mb-8 max-w-2xl leading-relaxed">
-            Experience seamless visa processing with our expert guidance. 
-            Specialized services for Dubai and Greece travel with reliability and efficiency.
+            Experience seamless travel planning with our expert visa services and flight bookings. 
+            Specialized destinations include Dubai, Europe, and beyond - all with reliability and efficiency.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button 
@@ -26,7 +30,7 @@ const Hero = () => {
               className="bg-lyana-blue hover:bg-lyana-blue/90 text-white px-8 py-6 text-lg group transition-all duration-300"
             >
               <Link to="/contact" className="flex items-center">
-                Get Started
+                Plan Your Journey
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
@@ -37,7 +41,7 @@ const Hero = () => {
               className="bg-transparent border-white text-white hover:bg-white hover:text-lyana-navy px-8 py-6 text-lg"
             >
               <Link to="/about" className="flex items-center">
-                Learn More <ArrowRight className="ml-2 h-5 w-5" />
+                Discover Our Services <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
           </div>

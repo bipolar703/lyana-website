@@ -2,6 +2,10 @@
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Mail, MapPin, Phone, Twitter } from 'lucide-react';
 
+/**
+ * Footer component
+ * Displays site footer with navigation, contact information, and social links
+ */
 const Footer = () => {
   return (
     <footer className="bg-lyana-navy text-white pt-16 pb-8">
@@ -10,7 +14,7 @@ const Footer = () => {
           <div className="animate-fade-in">
             <h3 className="text-2xl font-bold mb-6">LYANA</h3>
             <p className="text-gray-300 mb-6">
-              Your effortless path to Dubai & Greece visas. We specialize in streamlined visa services with expert guidance every step of the way.
+              Your global travel partner for visa services and flight bookings. We specialize in streamlined travel solutions with expert guidance every step of the way.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-white hover:text-lyana-gold transition-colors p-2 bg-lyana-navy/40 rounded-full" aria-label="Facebook">
@@ -40,7 +44,13 @@ const Footer = () => {
               <li>
                 <Link to="/greece" className="text-gray-300 hover:text-lyana-gold transition-colors flex items-center">
                   <span className="mr-2">→</span>
-                  Greece Visas
+                  Greece & Europe Visas
+                </Link>
+              </li>
+              <li>
+                <Link to="/flights" className="text-gray-300 hover:text-lyana-gold transition-colors flex items-center">
+                  <span className="mr-2">→</span>
+                  Flight Bookings
                 </Link>
               </li>
               <li>
@@ -49,43 +59,37 @@ const Footer = () => {
                   UAE Business Visas
                 </Link>
               </li>
-              <li>
-                <Link to="/greece" className="text-gray-300 hover:text-lyana-gold transition-colors flex items-center">
-                  <span className="mr-2">→</span>
-                  Schengen Visas
-                </Link>
-              </li>
             </ul>
           </div>
 
           <div className="animate-fade-in">
             <h4 className="text-xl font-bold mb-6 relative inline-block">
-              Company
+              Popular Destinations
               <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-lyana-gold"></span>
             </h4>
             <ul className="space-y-4">
               <li>
-                <Link to="/about" className="text-gray-300 hover:text-lyana-gold transition-colors flex items-center">
+                <Link to="/dubai" className="text-gray-300 hover:text-lyana-gold transition-colors flex items-center">
                   <span className="mr-2">→</span>
-                  About Us
+                  Dubai, UAE
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-300 hover:text-lyana-gold transition-colors flex items-center">
+                <Link to="/greece" className="text-gray-300 hover:text-lyana-gold transition-colors flex items-center">
                   <span className="mr-2">→</span>
-                  Contact Us
+                  Greece
                 </Link>
               </li>
               <li>
                 <a href="#" className="text-gray-300 hover:text-lyana-gold transition-colors flex items-center">
                   <span className="mr-2">→</span>
-                  Terms & Conditions
+                  France
                 </a>
               </li>
               <li>
                 <a href="#" className="text-gray-300 hover:text-lyana-gold transition-colors flex items-center">
                   <span className="mr-2">→</span>
-                  Privacy Policy
+                  Switzerland
                 </a>
               </li>
             </ul>

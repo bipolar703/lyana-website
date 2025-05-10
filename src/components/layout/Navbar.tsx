@@ -3,7 +3,20 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import { 
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger
+} from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
 
+/**
+ * Navbar component
+ * Provides navigation for the website, including dropdown menus for services
+ */
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -50,18 +63,46 @@ const Navbar = () => {
           >
             Home
           </Link>
-          <Link 
-            to="/dubai" 
-            className={`hover-underline ${isScrolled ? 'text-lyana-navy' : 'text-white'} ${isActiveRoute('/dubai') ? 'after:scale-x-100' : ''}`}
-          >
-            Dubai Visas
-          </Link>
-          <Link 
-            to="/greece" 
-            className={`hover-underline ${isScrolled ? 'text-lyana-navy' : 'text-white'} ${isActiveRoute('/greece') ? 'after:scale-x-100' : ''}`}
-          >
-            Greece Visas
-          </Link>
+
+          {/* Services Navigation Menu */}
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className={`hover-underline bg-transparent ${isScrolled ? 'text-lyana-navy' : 'text-white'}`}>
+                  Services
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid gap-3 p-6 w-[400px] grid-cols-1">
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link to="/dubai" className="block p-3 space-y-1 rounded-md hover:bg-gray-50">
+                          <h3 className="font-medium text-lyana-navy">Dubai Visas</h3>
+                          <p className="text-sm text-gray-600">Tourist and business visa services for Dubai</p>
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link to="/greece" className="block p-3 space-y-1 rounded-md hover:bg-gray-50">
+                          <h3 className="font-medium text-lyana-navy">Greece & Europe Visas</h3>
+                          <p className="text-sm text-gray-600">Schengen and European travel documentation</p>
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link to="/flights" className="block p-3 space-y-1 rounded-md hover:bg-gray-50">
+                          <h3 className="font-medium text-lyana-navy">Flight Bookings</h3>
+                          <p className="text-sm text-gray-600">International flight tickets and packages</p>
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+
           <Link 
             to="/about" 
             className={`hover-underline ${isScrolled ? 'text-lyana-navy' : 'text-white'} ${isActiveRoute('/about') ? 'after:scale-x-100' : ''}`}
@@ -79,7 +120,7 @@ const Navbar = () => {
             className={`transition-all duration-300 ${isScrolled ? 'bg-lyana-blue text-white' : 'bg-white text-lyana-navy hover:bg-lyana-gold hover:text-white'}`}
           >
             <Link to="/contact">
-              Apply Now
+              Plan Your Trip
             </Link>
           </Button>
         </nav>
@@ -109,20 +150,33 @@ const Navbar = () => {
             >
               Home
             </Link>
-            <Link 
-              to="/dubai" 
-              className={`text-lyana-navy py-2 hover:text-lyana-blue transition-colors ${isActiveRoute('/dubai') ? 'font-bold' : ''}`}
-              onClick={() => setIsOpen(false)}
-            >
-              Dubai Visas
-            </Link>
-            <Link 
-              to="/greece" 
-              className={`text-lyana-navy py-2 hover:text-lyana-blue transition-colors ${isActiveRoute('/greece') ? 'font-bold' : ''}`}
-              onClick={() => setIsOpen(false)}
-            >
-              Greece Visas
-            </Link>
+            
+            {/* Mobile Services Submenu */}
+            <div className="pl-4 border-l-2 border-gray-100">
+              <p className="text-lyana-navy font-bold py-2">Services</p>
+              <Link 
+                to="/dubai" 
+                className={`text-lyana-navy py-2 block hover:text-lyana-blue transition-colors ${isActiveRoute('/dubai') ? 'font-bold' : ''}`}
+                onClick={() => setIsOpen(false)}
+              >
+                Dubai Visas
+              </Link>
+              <Link 
+                to="/greece" 
+                className={`text-lyana-navy py-2 block hover:text-lyana-blue transition-colors ${isActiveRoute('/greece') ? 'font-bold' : ''}`}
+                onClick={() => setIsOpen(false)}
+              >
+                Greece & Europe Visas
+              </Link>
+              <Link 
+                to="/flights" 
+                className={`text-lyana-navy py-2 block hover:text-lyana-blue transition-colors ${isActiveRoute('/flights') ? 'font-bold' : ''}`}
+                onClick={() => setIsOpen(false)}
+              >
+                Flight Bookings
+              </Link>
+            </div>
+            
             <Link 
               to="/about" 
               className={`text-lyana-navy py-2 hover:text-lyana-blue transition-colors ${isActiveRoute('/about') ? 'font-bold' : ''}`}
@@ -139,7 +193,7 @@ const Navbar = () => {
             </Link>
             <Button asChild className="bg-lyana-blue text-white w-full">
               <Link to="/contact">
-                Apply Now
+                Plan Your Trip
               </Link>
             </Button>
           </div>

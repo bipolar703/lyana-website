@@ -4,6 +4,15 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
+/**
+ * Props for the DestinationFeature component
+ * @interface DestinationFeatureProps
+ * @property {string} title - The title of the destination
+ * @property {string} description - The description of the destination
+ * @property {string} imageUrl - The URL of the destination image
+ * @property {string} linkTo - The URL to navigate to when clicking the button
+ * @property {("left"|"right")} [alignment="left"] - The alignment of the image (left or right)
+ */
 interface DestinationFeatureProps {
   title: string;
   description: string;
@@ -12,6 +21,10 @@ interface DestinationFeatureProps {
   alignment?: "left" | "right";
 }
 
+/**
+ * DestinationFeature component
+ * Displays a destination with an image, title, description, and a call-to-action button
+ */
 const DestinationFeature = ({
   title,
   description,
