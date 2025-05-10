@@ -7,78 +7,95 @@ const Footer = () => {
     <footer className="bg-lyana-navy text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12">
-          <div>
+          <div className="animate-fade-in">
             <h3 className="text-2xl font-bold mb-6">LYANA</h3>
             <p className="text-gray-300 mb-6">
               Your effortless path to Dubai & Greece visas. We specialize in streamlined visa services with expert guidance every step of the way.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-white hover:text-lyana-gold transition-colors" aria-label="Facebook">
+              <a href="#" className="text-white hover:text-lyana-gold transition-colors p-2 bg-lyana-navy/40 rounded-full" aria-label="Facebook">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="text-white hover:text-lyana-gold transition-colors" aria-label="Instagram">
+              <a href="#" className="text-white hover:text-lyana-gold transition-colors p-2 bg-lyana-navy/40 rounded-full" aria-label="Instagram">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="text-white hover:text-lyana-gold transition-colors" aria-label="Twitter">
+              <a href="#" className="text-white hover:text-lyana-gold transition-colors p-2 bg-lyana-navy/40 rounded-full" aria-label="Twitter">
                 <Twitter className="w-5 h-5" />
               </a>
             </div>
           </div>
 
-          <div>
-            <h4 className="text-xl font-bold mb-6">Services</h4>
+          <div className="animate-fade-in">
+            <h4 className="text-xl font-bold mb-6 relative inline-block">
+              Services
+              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-lyana-gold"></span>
+            </h4>
             <ul className="space-y-4">
               <li>
-                <Link to="/dubai" className="text-gray-300 hover:text-lyana-gold transition-colors">
+                <Link to="/dubai" className="text-gray-300 hover:text-lyana-gold transition-colors flex items-center">
+                  <span className="mr-2">→</span>
                   Dubai Visas
                 </Link>
               </li>
               <li>
-                <Link to="/greece" className="text-gray-300 hover:text-lyana-gold transition-colors">
+                <Link to="/greece" className="text-gray-300 hover:text-lyana-gold transition-colors flex items-center">
+                  <span className="mr-2">→</span>
                   Greece Visas
                 </Link>
               </li>
               <li>
-                <Link to="/dubai" className="text-gray-300 hover:text-lyana-gold transition-colors">
+                <Link to="/dubai" className="text-gray-300 hover:text-lyana-gold transition-colors flex items-center">
+                  <span className="mr-2">→</span>
                   UAE Business Visas
                 </Link>
               </li>
               <li>
-                <Link to="/greece" className="text-gray-300 hover:text-lyana-gold transition-colors">
+                <Link to="/greece" className="text-gray-300 hover:text-lyana-gold transition-colors flex items-center">
+                  <span className="mr-2">→</span>
                   Schengen Visas
                 </Link>
               </li>
             </ul>
           </div>
 
-          <div>
-            <h4 className="text-xl font-bold mb-6">Company</h4>
+          <div className="animate-fade-in">
+            <h4 className="text-xl font-bold mb-6 relative inline-block">
+              Company
+              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-lyana-gold"></span>
+            </h4>
             <ul className="space-y-4">
               <li>
-                <Link to="/about" className="text-gray-300 hover:text-lyana-gold transition-colors">
+                <Link to="/about" className="text-gray-300 hover:text-lyana-gold transition-colors flex items-center">
+                  <span className="mr-2">→</span>
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-300 hover:text-lyana-gold transition-colors">
+                <Link to="/contact" className="text-gray-300 hover:text-lyana-gold transition-colors flex items-center">
+                  <span className="mr-2">→</span>
                   Contact Us
                 </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-lyana-gold transition-colors">
+                <a href="#" className="text-gray-300 hover:text-lyana-gold transition-colors flex items-center">
+                  <span className="mr-2">→</span>
                   Terms & Conditions
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-lyana-gold transition-colors">
+                <a href="#" className="text-gray-300 hover:text-lyana-gold transition-colors flex items-center">
+                  <span className="mr-2">→</span>
                   Privacy Policy
                 </a>
               </li>
             </ul>
           </div>
 
-          <div>
-            <h4 className="text-xl font-bold mb-6">Contact Us</h4>
+          <div className="animate-fade-in">
+            <h4 className="text-xl font-bold mb-6 relative inline-block">
+              Contact Us
+              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-lyana-gold"></span>
+            </h4>
             <ul className="space-y-4">
               <li className="flex items-start">
                 <MapPin className="w-5 h-5 mr-3 text-lyana-gold shrink-0 mt-1" />
