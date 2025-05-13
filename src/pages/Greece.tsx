@@ -1,189 +1,173 @@
-
-import Navbar from "@/components/layout/Navbar";
+import ContactForm from "@/components/common/ContactForm";
+import PageHero from "@/components/common/PageHero";
 import Footer from "@/components/layout/Footer";
-import ServiceCard from "@/components/services/ServiceCard";
+import Navbar from "@/components/layout/Navbar";
 import ProcessSteps from "@/components/services/ProcessSteps";
 import Requirements from "@/components/services/Requirements";
-import ContactForm from "@/components/common/ContactForm";
+import ServiceCard from "@/components/services/ServiceCard";
+import { Button } from "@/components/ui/button";
+import { getCurrentLanguage, loadTranslations } from '@/lib/utils';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Greece = () => {
+  const [lang, setLang] = useState<'en' | 'ar'>(getCurrentLanguage());
+  const [t, setT] = useState<any>({}); // Translation state
+
+  useEffect(() => {
+    loadTranslations(lang).then(setT); // Load translations
+  }, [lang]);
+
+  // Service options with translation keys
   const serviceOptions = [
     {
-      title: "Tourist Visa",
-      description: "For leisure travelers visiting Greece's beautiful destinations",
-      features: [
-        "90-day Schengen visa",
-        "Expert document preparation",
-        "Application submission",
-        "Consulate appointment assistance",
-        "Status tracking"
+      titleKey: "greecePage.touristVisaTitle",
+      descriptionKey: "greecePage.touristVisaDesc",
+      featuresKeys: [
+        "greecePage.touristVisaFeat1",
+        "greecePage.touristVisaFeat2",
+        "greecePage.touristVisaFeat3",
+        "greecePage.touristVisaFeat4",
+        "greecePage.touristVisaFeat5"
       ],
       price: "$179",
       popular: true,
       linkTo: "/contact"
     },
     {
-      title: "Business Visa",
-      description: "Designed for professionals attending meetings or conferences",
-      features: [
-        "Multiple entry options",
-        "Expedited processing",
-        "Document preparation",
-        "Application submission",
-        "Status tracking"
+      titleKey: "greecePage.businessVisaTitle",
+      descriptionKey: "greecePage.businessVisaDesc",
+      featuresKeys: [
+        "greecePage.businessVisaFeat1",
+        "greecePage.businessVisaFeat2",
+        "greecePage.businessVisaFeat3",
+        "greecePage.businessVisaFeat4",
+        "greecePage.businessVisaFeat5"
       ],
       price: "$249",
       linkTo: "/contact"
     },
     {
-      title: "Long-Stay Visa",
-      description: "For those planning extended stays or special purposes",
-      features: [
-        "Up to 1 year validity",
-        "Comprehensive documentation support",
-        "Application strategy",
-        "Interview preparation",
-        "Status tracking"
+      titleKey: "greecePage.longStayVisaTitle",
+      descriptionKey: "greecePage.longStayVisaDesc",
+      featuresKeys: [
+        "greecePage.longStayVisaFeat1",
+        "greecePage.longStayVisaFeat2",
+        "greecePage.longStayVisaFeat3",
+        "greecePage.longStayVisaFeat4",
+        "greecePage.longStayVisaFeat5"
       ],
       price: "$329",
       linkTo: "/contact"
     }
   ];
 
+  // Process steps with translation keys
   const processSteps = [
-    {
-      number: 1,
-      title: "Initial Assessment",
-      description: "Consultation to determine your eligibility and the appropriate visa category for your travel needs."
-    },
-    {
-      number: 2,
-      title: "Document Preparation",
-      description: "Guidance on collecting and preparing all required documentation according to Greek consulate standards."
-    },
-    {
-      number: 3,
-      title: "Application Submission",
-      description: "Professional submission of your application, including assistance with appointments and forms."
-    },
-    {
-      number: 4,
-      title: "Visa Issuance",
-      description: "Collection of your approved visa and final preparation for your journey to Greece."
-    }
+    { number: 1, titleKey: "greecePage.step1Title", descriptionKey: "greecePage.step1Desc" },
+    { number: 2, titleKey: "greecePage.step2Title", descriptionKey: "greecePage.step2Desc" },
+    { number: 3, titleKey: "greecePage.step3Title", descriptionKey: "greecePage.step3Desc" },
+    { number: 4, titleKey: "greecePage.step4Title", descriptionKey: "greecePage.step4Desc" }
   ];
 
+  // Requirements with translation keys
   const requirements = [
-    {
-      title: "Valid Passport",
-      content: "Your passport must be valid for at least three months beyond your planned departure date from the Schengen Area. It should have at least two blank pages and be issued within the last 10 years."
-    },
-    {
-      title: "Visa Application Form",
-      content: "A completed and signed Schengen visa application form. Our team will assist you in filling this out correctly to avoid common mistakes."
-    },
-    {
-      title: "Passport Photos",
-      content: "Two recent color photographs meeting the specific Schengen visa photo requirements (35mm x 45mm, light background)."
-    },
-    {
-      title: "Travel Insurance",
-      content: "Proof of travel medical insurance covering at least €30,000 for medical emergencies and repatriation, valid throughout the Schengen area for your entire stay."
-    },
-    {
-      title: "Proof of Accommodation",
-      content: "Hotel reservations or proof of accommodation for your entire stay in Greece and any other Schengen countries you plan to visit."
-    },
-    {
-      title: "Flight Itinerary",
-      content: "Round-trip flight reservation showing dates of entry and exit from the Schengen Area."
-    },
-    {
-      title: "Proof of Financial Means",
-      content: "Bank statements from the last 3-6 months showing sufficient funds to support yourself during your stay (approximately €50-100 per day of your visit)."
-    },
-    {
-      title: "Travel Itinerary",
-      content: "A detailed day-by-day itinerary of your planned activities and places to visit in Greece and any other Schengen countries."
-    }
+    { titleKey: "greecePage.req1Title", contentKey: "greecePage.req1Content" },
+    { titleKey: "greecePage.req2Title", contentKey: "greecePage.req2Content" },
+    { titleKey: "greecePage.req3Title", contentKey: "greecePage.req3Content" },
+    { titleKey: "greecePage.req4Title", contentKey: "greecePage.req4Content" },
+    { titleKey: "greecePage.req5Title", contentKey: "greecePage.req5Content" },
+    { titleKey: "greecePage.req6Title", contentKey: "greecePage.req6Content" },
+    { titleKey: "greecePage.req7Title", contentKey: "greecePage.req7Content" },
+    { titleKey: "greecePage.req8Title", contentKey: "greecePage.req8Content" }
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className={`min-h-screen ${lang === 'ar' ? 'font-arabic' : ''}`}>
       <Navbar />
-      
+
       <main>
         {/* Hero Section */}
-        <div className="relative min-h-[60vh] bg-greece-pattern bg-cover bg-center flex items-center">
-          <div className="absolute inset-0 bg-gradient-to-r from-lyana-navy/80 to-lyana-navy/60" />
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-3xl animate-fade-in">
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-                Greece Visa Services
-              </h1>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl">
-                Expert guidance through the Greece visa application process. 
-                We simplify Schengen visa requirements to make your journey to Greece smooth and stress-free.
-              </p>
-            </div>
-          </div>
-        </div>
-        
+        <PageHero
+          backgroundImage="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1920&auto=format&fit=crop"
+          title={t.greecePage?.heroTitle || 'Greece Visa Services'}
+          subtitle={t.greecePage?.heroSubtitle || 'Expert guidance through the Greece visa application process. We simplify Schengen visa requirements to make your journey to Greece smooth and stress-free.'}
+          currentLang={lang}
+          height="default"
+        >
+          <Button
+            asChild
+            size="lg"
+            className="bg-lyana-blue hover:bg-lyana-blue/90 text-white px-8 py-6 text-lg"
+          >
+            <Link to={`/${lang}/contact`}>
+              {t.greecePage?.requestQuote || 'Request a Quote'}
+            </Link>
+          </Button>
+        </PageHero>
+
         {/* Introduction */}
         <div className="section-padding">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="animate-fade-in order-2 lg:order-1">
-                <img 
-                  src="https://images.unsplash.com/photo-1482938289607-e9573fc25ebb"
-                  alt="Beautiful coastline of Santorini, Greece" 
-                  className="rounded-xl shadow-lg w-full h-auto"
-                />
-              </div>
-              <div className="animate-fade-in order-1 lg:order-2">
+              <div className="animate-fade-in">
                 <h2 className="text-3xl font-bold mb-4 text-lyana-navy">
-                  Experience the Beauty of Greece
+                  {t.greecePage?.introTitle || 'Explore Ancient Wonders & Island Beauty'}
                 </h2>
                 <p className="text-gray-600 mb-4">
-                  Greece, with its stunning islands, rich history, and Mediterranean charm, 
-                  offers an unforgettable travel experience. Our specialized Greece visa services 
-                  navigate the complexities of Schengen visa applications, ensuring a smooth path 
-                  to approval.
+                  {t.greecePage?.introDesc1 || 'From the historic Acropolis...'}
                 </p>
                 <p className="text-gray-600 mb-4">
-                  Our team of visa experts understands the specific requirements and nuances of 
-                  Greek consulate procedures. We provide personalized guidance through every step 
-                  of the process, from document preparation to application submission.
+                  {t.greecePage?.introDesc2 || 'We assist with tourist visas...'}
                 </p>
-                <p className="text-gray-600">
-                  With Lyana's Greece visa services, you gain the confidence of working with 
-                  specialists who maximize your chances of approval while minimizing delays and complications.
+                <p className="text-gray-600 mb-6">
+                  {t.greecePage?.introDesc3 || 'Trust Lyana to guide you...'}
                 </p>
+
+                {/* Added new photo */}
+                <div className="relative overflow-hidden rounded-lg shadow-md mb-6">
+                  <img
+                    src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1200&auto=format&fit=crop"
+                    alt="Santorini, Greece"
+                    className="w-full h-auto"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent">
+                    <p className="text-white text-sm">
+                      {t.greecePage?.santoriniCaption || 'Santorini - One of Greece\'s most iconic destinations'}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="animate-fade-in">
+                <img
+                  src="https://images.unsplash.com/photo-1509984666906-903c7020410b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MXxzZWFyY2h8M3x8Z3JlZWNlJTIwdmlzYXxlbnwwfHx8fDE2MTY4NzUyNDU&ixlib=rb-1.2.1&q=80&w=1080"
+                  alt={t.greecePage?.introTitle || 'Scenic view of Greece'}
+                  className="rounded-xl shadow-lg w-full h-auto"
+                />
               </div>
             </div>
           </div>
         </div>
-        
+
         {/* Service Options */}
         <div className="section-padding bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-lyana-navy">
-                Our Greece Visa Services
+                {t.greecePage?.servicesTitle || 'Our Greece & Schengen Visa Services'}
               </h2>
               <p className="text-gray-600">
-                Choose the visa service that aligns with your travel purpose. Each option includes 
-                comprehensive support throughout the application process.
+                {t.greecePage?.servicesSubtitle || 'Choose the visa option that fits...'}
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-in">
               {serviceOptions.map((service, index) => (
                 <ServiceCard
                   key={index}
-                  title={service.title}
-                  description={service.description}
-                  features={service.features}
+                  titleKey={service.titleKey}
+                  descriptionKey={service.descriptionKey}
+                  featuresKeys={service.featuresKeys}
                   price={service.price}
                   popular={service.popular}
                   linkTo={service.linkTo}
@@ -192,55 +176,57 @@ const Greece = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Process Steps */}
         <ProcessSteps
           steps={processSteps}
-          title="Our Visa Application Process"
-          subtitle="A straightforward approach to obtaining your Greece visa with expert guidance at every step"
+          titleKey="greecePage.processTitle"
+          subtitleKey="greecePage.processSubtitle"
         />
-        
+
         {/* Requirements */}
         <Requirements
           requirements={requirements}
-          title="Greece Visa Requirements"
-          subtitle="Essential documentation needed for a successful Schengen visa application to Greece"
+          titleKey="greecePage.reqTitle"
+          subtitleKey="greecePage.reqSubtitle"
         />
-        
+
         {/* Contact Form */}
         <div className="section-padding bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div className="animate-fade-in">
                 <h2 className="text-3xl font-bold mb-4 text-lyana-navy">
-                  Start Your Greece Visa Application
+                  {t.greecePage?.contactTitle || 'Apply for Your Greece Visa Today'}
                 </h2>
                 <p className="text-gray-600 mb-6">
-                  Contact our Greece visa specialists today to begin your journey to the Mediterranean. 
-                  We're ready to provide the expertise and support you need for a successful application.
+                  {t.greecePage?.contactSubtitle || "Connect with our Schengen visa experts today to begin your journey to the Mediterranean. We're ready to provide the expertise and support you need for a successful application."}
                 </p>
                 <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
-                  <h3 className="text-xl font-bold mb-3 text-lyana-navy">How We Enhance Your Application</h3>
+                  <h3 className="text-xl font-bold mb-3 text-lyana-navy">
+                    {t.greecePage?.whyChooseUs || 'Benefits of Our Greece Visa Service'}
+                  </h3>
                   <ul className="space-y-3 text-gray-600">
-                    <li>• In-depth knowledge of Greek consulate requirements</li>
-                    <li>• Strategic presentation of your documentation</li>
-                    <li>• Preparation for potential interview questions</li>
-                    <li>• Regular updates throughout the application process</li>
-                    <li>• Mitigation of common rejection factors</li>
+                    <li>{t.greecePage?.choose1 || '• Default benefit 1'}</li>
+                    <li>{t.greecePage?.choose2 || '• Default benefit 2'}</li>
+                    <li>{t.greecePage?.choose3 || '• Default benefit 3'}</li>
+                    <li>{t.greecePage?.choose4 || '• Default benefit 4'}</li>
+                    <li>{t.greecePage?.choose5 || '• Default benefit 5'}</li>
                   </ul>
                 </div>
               </div>
               <div className="animate-fade-in">
-                <ContactForm 
-                  title="Contact Our Greece Visa Experts" 
-                  subtitle="Complete the form below to connect with our specialists and begin your visa application journey."
+                <ContactForm
+                  titleKey="greecePage.startApplicationTitle"
+                  subtitleKey="greecePage.startApplicationSubtitle"
+                  currentLang={lang}
                 />
               </div>
             </div>
           </div>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );

@@ -1,49 +1,60 @@
-
-import Navbar from "@/components/layout/Navbar";
+import ContactForm from "@/components/common/ContactForm";
+import PageHero from "@/components/common/PageHero";
 import Footer from "@/components/layout/Footer";
-import ServiceCard from "@/components/services/ServiceCard";
+import Navbar from "@/components/layout/Navbar";
 import ProcessSteps from "@/components/services/ProcessSteps";
 import Requirements from "@/components/services/Requirements";
-import ContactForm from "@/components/common/ContactForm";
+import ServiceCard from "@/components/services/ServiceCard";
+import { Button } from "@/components/ui/button";
+import { getCurrentLanguage, loadTranslations } from '@/lib/utils';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Dubai = () => {
+  const [lang, setLang] = useState<'en' | 'ar'>(getCurrentLanguage());
+  const [t, setT] = useState<any>({}); // Translation state
+
+  useEffect(() => {
+    loadTranslations(lang).then(setT); // Load translations
+  }, [lang]);
+
   const serviceOptions = [
     {
-      title: "Tourist Visa",
-      description: "Perfect for leisure travel to experience Dubai's attractions",
-      features: [
-        "30-day single entry visa",
-        "Fast processing time",
-        "Document review by experts",
-        "Application assistance",
-        "Status tracking"
+      titleKey: "dubaiPage.touristVisaTitle",
+      descriptionKey: "dubaiPage.touristVisaDesc",
+      featuresKeys: [
+        "dubaiPage.touristVisaFeat1",
+        "dubaiPage.touristVisaFeat2",
+        "dubaiPage.touristVisaFeat3",
+        "dubaiPage.touristVisaFeat4",
+        "dubaiPage.touristVisaFeat5"
       ],
       price: "$149",
       popular: true,
       linkTo: "/contact"
     },
     {
-      title: "Business Visa",
-      description: "Ideal for corporate meetings and business opportunities",
-      features: [
-        "90-day multiple entry visa",
-        "Priority processing",
-        "Document review by experts",
-        "Application assistance",
-        "Status tracking"
+      titleKey: "dubaiPage.businessVisaTitle",
+      descriptionKey: "dubaiPage.businessVisaDesc",
+      featuresKeys: [
+        "dubaiPage.businessVisaFeat1",
+        "dubaiPage.businessVisaFeat2",
+        "dubaiPage.businessVisaFeat3",
+        "dubaiPage.businessVisaFeat4",
+        "dubaiPage.businessVisaFeat5"
       ],
       price: "$249",
       linkTo: "/contact"
     },
     {
-      title: "Transit Visa",
-      description: "Short stay option for travelers passing through Dubai",
-      features: [
-        "96-hour validity",
-        "Express processing",
-        "Document review",
-        "Application assistance",
-        "Status tracking"
+      titleKey: "dubaiPage.transitVisaTitle",
+      descriptionKey: "dubaiPage.transitVisaDesc",
+      featuresKeys: [
+        "dubaiPage.transitVisaFeat1",
+        "dubaiPage.transitVisaFeat2",
+        "dubaiPage.transitVisaFeat3",
+        "dubaiPage.transitVisaFeat4",
+        "dubaiPage.transitVisaFeat5"
       ],
       price: "$99",
       linkTo: "/contact"
@@ -51,130 +62,93 @@ const Dubai = () => {
   ];
 
   const processSteps = [
-    {
-      number: 1,
-      title: "Consultation",
-      description: "Speak with our visa experts to determine the right visa type for your travel needs."
-    },
-    {
-      number: 2,
-      title: "Documentation",
-      description: "Submit required documents which our team will carefully review for accuracy and completeness."
-    },
-    {
-      number: 3,
-      title: "Application",
-      description: "We handle the submission process, ensuring all requirements are properly addressed."
-    },
-    {
-      number: 4,
-      title: "Approval",
-      description: "Receive your visa approval and prepare for your journey to Dubai."
-    }
+    { number: 1, titleKey: "dubaiPage.step1Title", descriptionKey: "dubaiPage.step1Desc" },
+    { number: 2, titleKey: "dubaiPage.step2Title", descriptionKey: "dubaiPage.step2Desc" },
+    { number: 3, titleKey: "dubaiPage.step3Title", descriptionKey: "dubaiPage.step3Desc" },
+    { number: 4, titleKey: "dubaiPage.step4Title", descriptionKey: "dubaiPage.step4Desc" }
   ];
 
   const requirements = [
-    {
-      title: "Valid Passport",
-      content: "Your passport must be valid for at least six months beyond your planned stay in Dubai. It should have at least two blank visa pages for entry stamps."
-    },
-    {
-      title: "Passport-Sized Photographs",
-      content: "Recent color photographs (taken within the last 3 months) with white background, sized according to UAE visa photo specifications."
-    },
-    {
-      title: "Flight Itinerary",
-      content: "Confirmed round-trip flight reservation showing entry to and exit from Dubai, with dates that match your intended stay period."
-    },
-    {
-      title: "Hotel Reservations",
-      content: "Proof of accommodation for the duration of your stay, either hotel bookings or a letter of invitation if staying with residents."
-    },
-    {
-      title: "Financial Proof",
-      content: "Bank statements from the last 3-6 months showing sufficient funds to cover your stay in Dubai. A minimum balance may be required depending on the visa type."
-    },
-    {
-      title: "Travel Insurance",
-      content: "Comprehensive travel insurance that covers medical emergencies, hospitalization, and repatriation for the entire duration of your stay in Dubai."
-    }
+    { titleKey: "dubaiPage.req1Title", contentKey: "dubaiPage.req1Content" },
+    { titleKey: "dubaiPage.req2Title", contentKey: "dubaiPage.req2Content" },
+    { titleKey: "dubaiPage.req3Title", contentKey: "dubaiPage.req3Content" },
+    { titleKey: "dubaiPage.req4Title", contentKey: "dubaiPage.req4Content" },
+    { titleKey: "dubaiPage.req5Title", contentKey: "dubaiPage.req5Content" },
+    { titleKey: "dubaiPage.req6Title", contentKey: "dubaiPage.req6Content" }
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className={`min-h-screen ${lang === 'ar' ? 'font-arabic' : ''}`}>
       <Navbar />
-      
+
       <main>
         {/* Hero Section */}
-        <div className="relative min-h-[60vh] bg-dubai-pattern bg-cover bg-center flex items-center">
-          <div className="absolute inset-0 bg-gradient-to-r from-lyana-navy/80 to-lyana-navy/60" />
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-3xl animate-fade-in">
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-                Dubai Visa Services
-              </h1>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl">
-                Seamless visa processing for your journey to the dazzling city of Dubai. 
-                Our expertise ensures a smooth application experience with high approval rates.
-              </p>
-            </div>
-          </div>
-        </div>
-        
+        <PageHero
+          backgroundImage="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1920&auto=format&fit=crop"
+          title={t.dubaiPage?.heroTitle || 'Dubai Visa Services'}
+          subtitle={t.dubaiPage?.heroSubtitle || 'Seamless visa processing for your journey to the dazzling city of Dubai. Our expertise ensures a smooth application experience with high approval rates.'}
+          currentLang={lang}
+          height="default"
+        >
+          <Button
+            asChild
+            size="lg"
+            className="bg-lyana-blue hover:bg-lyana-blue/90 text-white px-8 py-6 text-lg"
+          >
+            <Link to={`/${lang}/contact`}>
+              {t.dubaiPage?.requestQuote || 'Request a Quote'}
+            </Link>
+          </Button>
+        </PageHero>
+
         {/* Introduction */}
         <div className="section-padding">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="animate-fade-in">
                 <h2 className="text-3xl font-bold mb-4 text-lyana-navy">
-                  Your Gateway to Dubai
+                  {t.dubaiPage?.introTitle || 'Your Gateway to Dubai'}
                 </h2>
                 <p className="text-gray-600 mb-4">
-                  Dubai, with its stunning architecture, luxurious shopping, and vibrant culture, 
-                  awaits your exploration. Our specialized visa services remove the complexities 
-                  of the application process, allowing you to focus on planning your perfect Dubai adventure.
+                  {t.dubaiPage?.introDesc1 || 'Dubai, with its stunning architecture, luxurious shopping, and vibrant culture, awaits your exploration. Our specialized visa services remove the complexities of the application process, allowing you to focus on planning your perfect Dubai adventure.'}
                 </p>
                 <p className="text-gray-600 mb-4">
-                  Whether you're visiting for tourism, business, or transit purposes, our team of 
-                  experienced visa consultants provides personalized guidance to ensure your application 
-                  meets all UAE requirements for a successful outcome.
+                  {t.dubaiPage?.introDesc2 || 'Whether you\'re visiting for tourism, business, or transit purposes, our team of experienced visa consultants provides personalized guidance to ensure your application meets all UAE requirements for a successful outcome.'}
                 </p>
                 <p className="text-gray-600">
-                  With Lyana's Dubai visa services, you gain access to expertise that significantly 
-                  streamlines the process, saving you time and reducing the risk of application rejection.
+                  {t.dubaiPage?.introDesc3 || 'With Lyana\'s Dubai visa services, you gain access to expertise that significantly streamlines the process, saving you time and reducing the risk of application rejection.'}
                 </p>
               </div>
               <div className="animate-fade-in">
-                <img 
+                <img
                   src="https://images.unsplash.com/photo-1466442929976-97f336a657be"
-                  alt="Dubai skyline with iconic buildings" 
+                  alt={t.dubaiPage?.introTitle || 'Dubai skyline with iconic buildings'}
                   className="rounded-xl shadow-lg w-full h-auto"
                 />
               </div>
             </div>
           </div>
         </div>
-        
+
         {/* Service Options */}
         <div className="section-padding bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-lyana-navy">
-                Our Dubai Visa Services
+                {t.dubaiPage?.servicesTitle || 'Our Dubai Visa Services'}
               </h2>
               <p className="text-gray-600">
-                Select the visa option that best suits your travel needs. Each service includes 
-                comprehensive support throughout the application process.
+                {t.dubaiPage?.servicesSubtitle || 'Select the visa option that best suits your travel needs. Each service includes comprehensive support throughout the application process.'}
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-in">
               {serviceOptions.map((service, index) => (
                 <ServiceCard
                   key={index}
-                  title={service.title}
-                  description={service.description}
-                  features={service.features}
+                  titleKey={service.titleKey}
+                  descriptionKey={service.descriptionKey}
+                  featuresKeys={service.featuresKeys}
                   price={service.price}
                   popular={service.popular}
                   linkTo={service.linkTo}
@@ -183,55 +157,57 @@ const Dubai = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Process Steps */}
         <ProcessSteps
           steps={processSteps}
-          title="Simple 4-Step Process"
-          subtitle="Our streamlined approach makes obtaining your Dubai visa quick and hassle-free"
+          titleKey="dubaiPage.processTitle"
+          subtitleKey="dubaiPage.processSubtitle"
         />
-        
+
         {/* Requirements */}
         <Requirements
           requirements={requirements}
-          title="Dubai Visa Requirements"
-          subtitle="Essential documents and information needed for your Dubai visa application"
+          titleKey="dubaiPage.reqTitle"
+          subtitleKey="dubaiPage.reqSubtitle"
         />
-        
+
         {/* Contact Form */}
         <div className="section-padding bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div className="animate-fade-in">
                 <h2 className="text-3xl font-bold mb-4 text-lyana-navy">
-                  Ready to Apply for Your Dubai Visa?
+                  {t.dubaiPage?.contactTitle || 'Ready to Apply for Your Dubai Visa?'}
                 </h2>
                 <p className="text-gray-600 mb-6">
-                  Contact our Dubai visa specialists today to begin your application process. 
-                  We're here to answer your questions and guide you every step of the way.
+                  {t.dubaiPage?.contactSubtitle || 'Contact our Dubai visa specialists today to begin your application process. We\'re here to answer your questions and guide you every step of the way.'}
                 </p>
                 <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
-                  <h3 className="text-xl font-bold mb-3 text-lyana-navy">Why Our Clients Choose Us</h3>
+                  <h3 className="text-xl font-bold mb-3 text-lyana-navy">
+                    {t.dubaiPage?.whyChooseUs || 'Why Our Clients Choose Us'}
+                  </h3>
                   <ul className="space-y-3 text-gray-600">
-                    <li>• Specialized expertise in UAE visa regulations</li>
-                    <li>• High approval success rate</li>
-                    <li>• Clear communication throughout the process</li>
-                    <li>• Time-saving service with minimal effort required from you</li>
-                    <li>• Dedicated support from application to approval</li>
+                    <li>{t.dubaiPage?.choose1 || '• Specialized expertise in UAE visa regulations'}</li>
+                    <li>{t.dubaiPage?.choose2 || '• High approval success rate'}</li>
+                    <li>{t.dubaiPage?.choose3 || '• Clear communication throughout the process'}</li>
+                    <li>{t.dubaiPage?.choose4 || '• Time-saving service with minimal effort required from you'}</li>
+                    <li>{t.dubaiPage?.choose5 || '• Dedicated support from application to approval'}</li>
                   </ul>
                 </div>
               </div>
               <div className="animate-fade-in">
-                <ContactForm 
-                  title="Start Your Visa Application" 
-                  subtitle="Fill out the form below to connect with our Dubai visa specialists."
+                <ContactForm
+                  titleKey="dubaiPage.startApplicationTitle"
+                  subtitleKey="dubaiPage.startApplicationSubtitle"
+                  currentLang={lang}
                 />
               </div>
             </div>
           </div>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );
